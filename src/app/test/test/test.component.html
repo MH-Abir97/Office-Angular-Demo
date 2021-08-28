@@ -263,9 +263,12 @@
 </p>
 <div class="">
 
-  <app-order-list    [dataSource]="pagedList" [addFilter]="true" [isButton]="true" [isSerial]="true" [ispaginator]="true"
+  <!-- <app-order-list    [dataSource]="getPagedList" [addFilter]="true" [isButton]="true" [isSerial]="true" [ispaginator]="true"
     [isSelect]="false">
-   
-  </app-order-list>
+    
+  </app-order-list> -->
+
+  <app-pagination-list></app-pagination-list>
+  
   
 </div>

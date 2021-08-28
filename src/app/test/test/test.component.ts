@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Exporter } from './exporter.model';
 import * as $ from 'jquery';
 import { ItemServiceService } from 'src/app/services/item-service.service';
@@ -6,12 +6,17 @@ import { StudentService } from 'src/app/student.service';
 import {map, startWith} from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import {Observable} from 'rxjs';
+
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.css'],
 })
 export class TestComponent implements OnInit {
+
+  @ViewChild(MatPaginator)paginator:MatPaginator
   itemList:any=[];
   dataTransferObject:any
   getAllInvoice:any=[]
@@ -34,6 +39,7 @@ export class TestComponent implements OnInit {
   factories:any=[];
   exporterBanks:any=[];
   ddlItemVal:string;
+
   exporters: Exporter[] = [
     { value: '1', viewValue: 'Retail Tech.' },
     { value: '2', viewValue: 'Others' },
@@ -45,18 +51,20 @@ export class TestComponent implements OnInit {
     { value: '3', viewValue: 'SC/FD' },
   ];
 
-  pagedList=[
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ]
+  // pagedList=[
+  //   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  //   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+  //   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
+  //   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+  //   {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+  //   {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
+  //   {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+  //   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
+  //   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
+  //   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  // ]
+
+  getPagedList:any=[];
   // factories: Exporter[] = [
   //   { value: '1', viewValue: 'Uttra' },
   //   { value: '2', viewValue: 'EpZ' },
@@ -152,35 +160,30 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
   
+    debugger;
+
    
 
-    debugger;
+ 
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)
       )
     );
-    debugger;
-
+    //this.GetPaged();
     this.getAllItemList();
-
-
     this.exportInvoice.RefEmployeeId=1;
     this.exportInvoice.SalesOrderIds=40958;
     this.GetAllCompany();
     this. getAllExpoter();
-    this.GetPaged();
+  
   }
 
-  GetPaged(){
-    this._itemSs.expGetaPaged().subscribe(data=>{
-      debugger;
-     // if(this.getPagedAllPiList.length !=0){
-        this.getPagedAllPiList=data;
-        console.log("GetPaged", this.getPagedAllPiList);
-      //}   
-    })
+  ngOnChanges(){
+   
   }
+
+ 
 
    
   CompanyId:number;
@@ -337,15 +340,5 @@ export class TestComponent implements OnInit {
    this._itemSs.GetExporter().subscribe(data=>this.factories=data);
   }
 
-  getAllBankAccount(){
 
-  }
-
-
-
-
-  // table
-
-
-  getItemInfo() {}
 }

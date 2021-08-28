@@ -24,6 +24,9 @@ import { NgxSummernoteModule } from 'ngx-summernote';
 import { FieldToDisplayPipe } from './test/order-list/field-to-display.pipe';
 import { DynamicTableComponent } from './test/dynamic-table/dynamic-table.component';
 import { StudentEntryComponent } from './student-entry/student-entry.component';
+import { PaginationListComponent } from './test/pagination-list/pagination-list.component';
+
+
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { StudentEntryComponent } from './student-entry/student-entry.component';
     FieldToDisplayPipe,
     DynamicTableComponent,
     StudentEntryComponent,
+    PaginationListComponent
+ 
+
   ],
   imports: [
     BrowserModule,

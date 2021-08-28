@@ -23,11 +23,7 @@ export interface PeriodicElement {
 export class OrderListComponent implements OnInit {
   @ViewChild(TestComponent) testComponentMethodAccess:TestComponent;
   selectList:Subscription;
-
-
   @Input() dynamicdableMethod:number;
-
-
   @Input()
   public content: any;
   @Input() dataSource: any=[];
@@ -57,7 +53,7 @@ export class OrderListComponent implements OnInit {
       this.selection.clear();
     }
 
-    
+   
 
    
    // console.log(this.getpagedDataList);
@@ -155,7 +151,8 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit(): void {
     debugger;
-    
+ 
+
     //this.getpagedDataList=this.dataSorce3;
      //console.log("GetPaged", this.getpagedDataList);
     
@@ -219,6 +216,7 @@ export class OrderListComponent implements OnInit {
   
 
   SelectedItem(row :any,check:MatCheckboxChange){
+   
     debugger;
   
     var checkedObj:any={}

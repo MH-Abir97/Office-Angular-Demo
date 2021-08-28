@@ -131,9 +131,10 @@ export class ItemServiceService {
   }
 
 
-  expGetaPaged():Observable<any>{
+  expGetaPaged(prams:string):Observable<any>{
     debugger;
-    return this.httpClient.get<any>(`http://localhost:3398/Exp/GetInvoicePaged?startRecordNo=1&rowPerPage=10&whereClause=''&rows=0`);
+    console.log("prams", prams)
+    return this.httpClient.get<any>(`http://localhost:3398/Exp/GetInvoicePaged?`+`${prams}`);
   }
 
   itemEntry(itemData: any) {

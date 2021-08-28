@@ -74,7 +74,12 @@
 </mat-table>
 <div *ngIf="ispaginator">
   
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of getpagedDataList"></mat-paginator>
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of getpagedDataList"></mat-paginator> -->
+  <!-- <mat-paginator [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page">
+</mat-paginator> -->
 </div>
 <button id="hide" mat-raised-button color="accent" (click)="add()">Get Checked Items</button>
 
